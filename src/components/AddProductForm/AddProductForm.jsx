@@ -34,7 +34,7 @@ export default function AddProductForm({handleAddProduct}){
       formData.append('productName', state.productName)
       formData.append('category', state.category)
       formData.append('oldPrice', state.oldPrice)
-      formData.append('newprice', state.newPrice)
+      formData.append('newPrice', state.newPrice)
       formData.append('caption', state.caption)
       formData.append('photo',photo)
       console.log

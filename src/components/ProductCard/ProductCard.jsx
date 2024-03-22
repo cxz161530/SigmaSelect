@@ -1,38 +1,35 @@
-import React from 'react'
-import {
-    CardMeta,
-    CardHeader,
-    CardDescription,
-    CardContent,
-    Card,
-    Icon,
-    Image,
-    Button
-} from 'semantic-ui-react'
-export default function ProductCard({ product, addProduct}) {
-    console.log(product.amount)
-
-    async function handleClick(){
-        addProduct(product._id)
-
-    }
+import { Card, Icon, Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 
-    return (
 
-        <Card>
-            <Image src={product.photoUrl} wrapped ui={false} />
-            <CardContent>
-                <CardHeader>{product.name}</CardHeader>
-                <CardMeta>{product.amount}</CardMeta>
-                <CardDescription>
-                    ${product.price}
-                </CardDescription>
-            </CardContent>
-            <CardContent extra>
-            <button class="ui button" onClick={handleClick} >Add Cart</button>
-            </CardContent>
-        </Card>
+export default function ProductCard({disPro}) {
+  return (
 
-    )
+    <Card>
+     <Image src={`${disPro.photoUrl}`} wrapped ui={false} />
+     
+      <Card.Content>
+        <Card.Description>
+        {disPro.productName},
+       
+        
+        
+        </Card.Description>
+
+        <Card.Description>
+        
+       
+        {disPro.newPrice}
+        
+        </Card.Description>
+       
+      </Card.Content>
+
+      
+
+
+     
+    </Card>
+  );
 }

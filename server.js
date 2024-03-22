@@ -9,6 +9,7 @@ require("./config/database");
 // Require controllers here
 
 const app = express();
+app.set('view engine','ejs')
 
 const userRouter = require("./routes/api/users")
 const postRouter = require('./routes/api/posts')
@@ -31,6 +32,22 @@ app.use("/api/users", userRouter);
 app.use('/api/posts', postRouter);
 app.use('/api/products', productRouter);
 // "catch all" route
+
+if(process.env.IS_PRODUCTION){
+  // This code will run in production
+    const manifest = require('./dist/manifest.json');
+    app.use(express.static(path.join(__dirname, "dist")));
+  
+    // "catch all" route when the code is in production
+    app.get('/*', function(req, res) {
+      res.render(path.join(__dirname, 'dist', 'index.ejs'), {manifest});
+    });
+  }
+  
+  // This is the catch all when the code is running locally
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, './','index.html'));
+  });
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });

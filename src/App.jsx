@@ -49,7 +49,7 @@ function App() {
       <Navbar/>
 
     </div><Routes>
-        <Route path="/" element={<Product/>} />
+        <Route path="/" element={<SigmaSelect/>} />
         <Route path="/Sale" element={<Category category = "sale"/>} />
         <Route path="/NewArrival" element={<Category category = "NewArrival"/>} />
         <Route path="/Health" element={<Category category = "Health"/>} />
