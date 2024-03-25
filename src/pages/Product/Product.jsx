@@ -8,6 +8,7 @@ export default function product({loggedUser}){
 //productname come from params app.js /:productName
 //localhost,,,/perfume shoule be perfume
   const [product, setProduct] = useState({})
+  const [reviewDetail, setReviewDetail] = useState([])
   const{productName} = useParams()
   console.log(productName)
   const [loading, setLoading] = useState(true)
@@ -40,7 +41,7 @@ export default function product({loggedUser}){
             
         }
     }
-    async function addReview(productName){ // productName comes from the productBIO component
+    async function handleAddReview(reviewFromTheForm){ // productName comes from the productBIO component
       // where we call this function
       try {
         const response = await fetch(`/api/.products/${productName}/reviews`, {
@@ -50,14 +51,14 @@ export default function product({loggedUser}){
             Authorization: "Bearer " + tokenService.getToken(),
             // We send the token, so the server knows who is making the
             // request
-          }
+          },
+          body: reviewFromTheForm
         })
   
         const data = await response.json();
-        console.log(data, ' response from addLike')
-        getProductInfo(); // Refetch the posts, which updates the state, 
-        // the post will now have the user in inside of the 
-        // post.likes array
+        console.log(data, ' response from sever')
+        setReviewDetail([data.reviewDetail, ...reviewDetail])
+        
       } catch(err){
         console.log(err)
       }
@@ -91,6 +92,6 @@ export default function product({loggedUser}){
 
     
     return(
-        <ProductBioDisplay product={product} addReview={addReview} removeReview = {removeReview} loggedUser ={loggedUser}/>
+        <ProductBioDisplay product={product} handleAddReview={handleAddReview} removeReview = {removeReview} loggedUser ={loggedUser}/>
         
     )}

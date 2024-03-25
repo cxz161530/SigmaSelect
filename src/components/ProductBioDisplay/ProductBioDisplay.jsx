@@ -1,7 +1,7 @@
 import { Grid, GridRow, GridColumn, Image, Segment, Button, Input } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import QTYincre from "../QtyIncre/qtyIncre";
-import Review from "../Review/Review"
+
 export default function ProductBioDisplay({product, addReview, removeReview, loggedUser}){
     console.log(product,'this from product bio product')
     return(
@@ -33,7 +33,8 @@ export default function ProductBioDisplay({product, addReview, removeReview, log
       
     </GridRow>
   </Grid>
-  <Review loggedUser={loggedUser}/>
+  <h1>Reviews</h1>
+  {}
   <Grid>
     
   </Grid>

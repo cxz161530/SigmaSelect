@@ -22,7 +22,7 @@ const Navbar=()=>{
                 <Link to='/'>Home</Link>
                 {menu ==="Home"?<span/>:<></>} </li>
               <li onClick={()=>{setMenu('New Arrival')}}>
-                <Link to='/NewArrivals'>New Arrival</Link>
+                <Link to='/NewArrival'>New Arrival</Link>
                 {menu ==="NewArrival"?<span/>:<></>}</li>
               <li onClick={()=>{setMenu('Sale')}}>
                 <Link to='/Sale'>Sale</Link>

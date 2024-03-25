@@ -1,12 +1,13 @@
 import {useState} from 'react'
 import React from 'react'
 import { FormField, Button,  Form , Segment } from 'semantic-ui-react'
+import {useLocation} from 'react-router-dom'
 
 
 
 
-
-export default function AddProductForm({handleAddProduct}){
+export default function AddProductForm(){
+ 
     const [photo, setPhoto] = useState("")
     const [state, setState]= useState({
       productName: '',
@@ -37,7 +38,7 @@ export default function AddProductForm({handleAddProduct}){
       formData.append('newPrice', state.newPrice)
       formData.append('caption', state.caption)
       formData.append('photo',photo)
-      console.log
+    
       handleAddProduct(formData)
 
     }

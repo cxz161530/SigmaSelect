@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react'
 import { Grid } from "semantic-ui-react";
 import tokenService from '../../utils/tokenService';
 import DisplayFeed from '../../components/DisplayFeed/DisplayFeed';
-const Category = ({category}) => {
+const Sale = () => {
     const[displayProduct, setDisplayProduct] = useState([])
     async function getProducts(){
         try {
             //react sent request tp express ask for data inside database
-            const response = await fetch(`/api/products?category=${category}`,{
+            const response = await fetch(`/api/products?category=Sale`, {
                 method: "GET",
                 /* headers:{
                     Authorization: 'Bearer '+tokenService.getToken()
@@ -20,7 +20,7 @@ const Category = ({category}) => {
             console.log(data, 'this is data');
             //get the data from react
             setDisplayProduct(data);
-            console.log(displayProduct)
+            console.log(displayProduct,'category sale')
 
 
 
@@ -54,4 +54,4 @@ const Category = ({category}) => {
     )
 }
 
-export default Category
+export default Sale

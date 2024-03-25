@@ -1,7 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useState } from 'react';
 import "./App.css";
-
 import SignUpPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 // ANY component that is rendered by a route, should be stored in the 
@@ -14,6 +13,9 @@ import Cart from "./pages/Cart/cart";
 import FeedPage from "./pages/FeedPage/FeedPage";
 import Product from "./pages/Product/Product";
 import ProductBioDisplay from "./components/ProductBioDisplay/ProductBioDisplay";
+import NewArrival from "./pages/NewArrival/NewArrival"
+import Sale from "./pages/Sale/Sale"
+
 
 function App() {
   // the userService.getUser() when the page loads it goes into localstorage and looks for a jwt
@@ -52,8 +54,8 @@ function App() {
 
     </div><Routes>
         <Route path="/" element={<SigmaSelect/>} />
-        <Route path="/Sale" element={<Category category = "sale"/>} />
-        <Route path="/NewArrival" element={<Category category = "NewArrival"/>} />
+        <Route path="/Sale" element={<Sale/>} />
+        <Route path="/NewArrival" element={<NewArrival/>} />
         <Route path="/Health" element={<Category category = "Health"/>} /> 
         <Route path="/cart" element={<Cart/>} /> 
         <Route path="/FeedPage" element={<FeedPage/>} />  
@@ -61,7 +63,7 @@ function App() {
         <Route path='/signup' element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path='/:productName' element={<Product loggedUser={user}/>}/>
         <Route path="/productBioDisplay" element={<ProductBioDisplay></ProductBioDisplay>} />
-          
+    
         
 
       </Routes></>
