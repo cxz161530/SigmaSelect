@@ -6,5 +6,6 @@ const upload = multer();
 
 router.post('/', upload.single('photo'), productsCtrl.create);
 router.get('/', productsCtrl.index)
+router.get('/:productName', productsCtrl.productBio)
 
 module.exports = router;

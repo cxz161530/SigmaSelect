@@ -14,6 +14,8 @@ app.set('view engine','ejs')
 const userRouter = require("./routes/api/users")
 const postRouter = require('./routes/api/posts')
 const productRouter = require('./routes/api/products')
+const reviewsRouter = require('./routes/api/reviews')
+
 // add in when the app is ready to be deployed
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger("dev"));
@@ -31,6 +33,7 @@ app.use(require("./config/auth"));
 app.use("/api/users", userRouter);
 app.use('/api/posts', postRouter);
 app.use('/api/products', productRouter);
+app.use('/api', reviewsRouter )
 // "catch all" route
 
 if(process.env.IS_PRODUCTION){

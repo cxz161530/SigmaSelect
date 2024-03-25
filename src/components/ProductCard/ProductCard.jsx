@@ -1,8 +1,9 @@
-import { Card, Icon, Image } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Card, Icon, Image, Button } from "semantic-ui-react";
+
+import { Link } from 'react-router-dom';
 
 
-
+// this is detail product page
 export default function ProductCard({disPro}) {
   return (
 
@@ -23,6 +24,21 @@ export default function ProductCard({disPro}) {
         {disPro.newPrice}
         
         </Card.Description>
+        
+            {<Link to = {`/${disPro.productName}`}>
+            <Button>
+            Details
+            </Button>
+
+
+            </Link>}
+            
+
+
+        
+        
+
+    
        
       </Card.Content>
 

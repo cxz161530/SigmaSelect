@@ -5,6 +5,7 @@ const reviewsSchema = mongoose.Schema({
   // One User has many likes, referencing because we have user model, so we can get the users information when we need it
   //
   userId: { type: mongoose.Schema.Types.ObjectId },
+  reviewDetail: String
 });
 
 

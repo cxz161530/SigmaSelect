@@ -14,12 +14,14 @@ const BUCKET_NAME = process.env.S3_BUCKET
 
 module.exports = {
     index,
-    create
+    create,
+    productBio
 }
 
 function create(req,res){
 
     console.log(req.file, req.body, req.user)
+     // check to make sure a file was sent over
 
     const filePath = `project-3/${uuidv4()}-${req.file.originalname}`
     const params = {Bucket:BUCKET_NAME, Key: filePath, Body: req.file.buffer}
@@ -53,6 +55,21 @@ async function index(req, res) {
     try {
         const products = await ProductModel.find({});
         res.status(200).json(products);
+
+    } catch (err) {
+        res.json({error: err})
+    }
+}
+
+async function productBio(req, res) {
+    try {
+        //find product by product name from param
+        const product = await ProductModel.findOne({productName: req.params.productName});
+        if(!product) return res.status(404).json({error: "no product find"})
+        //send entire obj
+        res.json(product)
+
+
 
     } catch (err) {
         res.json({error: err})

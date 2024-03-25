@@ -13,7 +13,7 @@ import SigmaSelect from "./pages/SigmaSelect/SigmaSelect";
 import Cart from "./pages/Cart/cart";
 import FeedPage from "./pages/FeedPage/FeedPage";
 import Product from "./pages/Product/Product";
-
+import ProductBioDisplay from "./components/ProductBioDisplay/ProductBioDisplay";
 
 function App() {
   // the userService.getUser() when the page loads it goes into localstorage and looks for a jwt
@@ -24,6 +24,11 @@ function App() {
     // we call this function after userService.login(), or userService.signup()
     // in order to get the token sent back from express and store the decoded token in the state
     setUser(userService.getUser())
+  }
+  function logout() {
+    console.log("happening");
+    userService.logout();
+    setUser(null);
   }
   if (!user) {
     return (
@@ -41,9 +46,6 @@ function App() {
     );
   }
   
-  
-  
-  
   return (
     <><div>
       <Navbar/>
@@ -52,15 +54,15 @@ function App() {
         <Route path="/" element={<SigmaSelect/>} />
         <Route path="/Sale" element={<Category category = "sale"/>} />
         <Route path="/NewArrival" element={<Category category = "NewArrival"/>} />
-        <Route path="/Health" element={<Category category = "Health"/>} />
-        {/* <Route path="/product" element={<Product/>} />
-        <Route path='/product/:productId' element={<Product/>}/> */}
+        <Route path="/Health" element={<Category category = "Health"/>} /> 
         <Route path="/cart" element={<Cart/>} /> 
         <Route path="/FeedPage" element={<FeedPage/>} />  
-
-        
         <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path='/signup' element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+        <Route path='/:productName' element={<Product loggedUser={user}/>}/>
+        <Route path="/productBioDisplay" element={<ProductBioDisplay></ProductBioDisplay>} />
+          
+        
 
       </Routes></>
   );

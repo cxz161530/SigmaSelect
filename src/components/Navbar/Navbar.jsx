@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 import './Navbar.css'
 import logo from '../assets/logoPic.png'
 import cart_icon from '../assets/bagPic.png'
 const Navbar=()=>{
-    //make a state for set function, default value is Beauty
+    //make a state for set function, default value is Home
     const[menu, setMenu]= useState("Home");
 
     return(
